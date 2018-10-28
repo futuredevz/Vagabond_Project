@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.create(name: "Chris", current_city: "Atl", img: "something")
+city = City.create(name: "Atlanta", img: "something")
+post = Post.create(title: "test", body: "this is a test", user_id: 1, city_id: 1 )
