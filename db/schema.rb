@@ -44,6 +44,3 @@ ActiveRecord::Schema.define(version: 2018_10_26_191626) do
   add_foreign_key "posts", "cities"
   add_foreign_key "posts", "users"
 end
-
-
-# moon

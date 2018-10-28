@@ -11,7 +11,7 @@ def show
 end
 
 def create
-    @post = City.find(params[:city_id].posts.create(post_params)
+    @post = City.find(params[:city_id]).posts.create(post_params)
     render json: @post
 end
 
