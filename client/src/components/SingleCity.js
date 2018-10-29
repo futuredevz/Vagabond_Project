@@ -10,23 +10,18 @@ export default class SingleCity extends Component {
         showNewPostForm: false
     }
 
-    async componentDidMount() {
+    fetchData = async () => {
         const cityId = this.props.match.params.id
-
-        const city = await this.fetchOneCity(cityId)
-        const posts = await this.fetchPosts(cityId)
-
-        this.setState({ city, posts })
+        const responseCity = await axios.get(`/api/cities/${cityId}`)
+        const responsePost = await axios.get(`/api/cities/${cityId}/posts`)
+        this.setState({
+            posts: responsePost.data,
+            city: responseCity.data
+        })
     }
 
-    fetchOneCity = async (id) => {
-        const response = await axios.get(`/api/cities/${id}`)
-        return response.data
-    }
-
-    fetchPosts = async (id) => {
-        const response = await axios.get(`/api/cities/${id}/posts`)
-        return response.data
+    async componentDidMount() {
+        this.fetchData()    
     }
 
     toggleShowNewPostForm = () => {
@@ -36,7 +31,7 @@ export default class SingleCity extends Component {
     addNewPost = async (newPost) => {
         const id = this.props.match.params.id
         await axios.post(`/api/cities/${id}/posts`, newPost)
-        
+        this.fetchData()
     }
 
 
@@ -46,7 +41,7 @@ export default class SingleCity extends Component {
         const postContent = this.state.posts.map((post, i) => {
             return (
                 <div key={i}>
-                    <h3><Link to={`posts/${post.id}`}>{post.title} </Link></h3>
+                    <h3><Link to={`/cities/${post.city_id}/posts/${post.id}`}>{post.title} </Link></h3>
                     <p>{post.body}</p>
                 </div>
             )
@@ -60,7 +55,7 @@ export default class SingleCity extends Component {
                     <NewPostForm
                     addNewPost = {this.addNewPost} /> : ''
                 }
-                {postContent}
+                {postContent.reverse()}
 
 
 
