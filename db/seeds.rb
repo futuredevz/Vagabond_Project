@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create(name: "Chris", current_city: "Atl", img: "something")
-city = City.create(name: "Atlanta", img: "https://i.pinimg.com/originals/ef/e5/77/efe57732e72644aeb14367eac4394c9a.jpg")
+city = City.create(name: "Atlanta", img: "https://i.imgur.com/PMSkWN5.jpg")
 post = Post.create(title: "test", body: "this is a test", user_id: 1, city_id: 1 )

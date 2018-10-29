@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 export default class EditPostForm extends Component {
     state = {
@@ -9,16 +10,23 @@ export default class EditPostForm extends Component {
     }
 
     handleChange = (event) => {
-        const post = { ...this.state.post }
-        console.log(event.target.value)
-        post[event.target] = event.target.value
+        const post = { ...this.state.post}
+        post[event.target.name] = event.target.value
         this.setState({ post })
     }
+
+    handleSubmit = async (event) => {
+        const cityId = this.props.match.params.city_id
+        const postId = this.props.match.params.id
+        event.preventDefault()
+        await axios.put(`/api/cities/${cityId}/posts/${postId}`, this.state.post)
+        this.props.history.push(`/cities/${cityId}/posts/${postId}`)
+      }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.props.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <input type='text' name='title'
                         value={this.state.post.title}
                         onChange={this.handleChange}
@@ -27,7 +35,7 @@ export default class EditPostForm extends Component {
                         value={this.state.post.body}
                         onChange={this.handleChange}
                     />
-                    {/* <Input type='submit' value='Update User' /> */}
+                    <input type='submit' value='Update Post' />
                 </form>
             </div>
         )

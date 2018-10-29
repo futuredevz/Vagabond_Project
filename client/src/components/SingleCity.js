@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 const CityPicture = styled.img`
     width: 100vw;
+    height: 400px;
 `
 
 const CityName = styled.div`
@@ -67,7 +68,7 @@ export default class SingleCity extends Component {
         })
         return (
             <div>
-                <div><CityPicture src={city.img} alt={city.name} height={400}/></div>
+                <div><CityPicture src={"https://i.imgur.com/PMSkWN5.jpg"} alt={city.name}/></div>
                 <CityName>
                     <h1>{city.name}</h1> 
                         <div onClick={this.toggleShowNewPostForm}>Add New Post</div>
@@ -77,11 +78,7 @@ export default class SingleCity extends Component {
                             }
                 </CityName>
                 <PostContainer>
-                    
-                    
                         {postContent.reverse()}
-
-
                 </PostContainer>
             </div>
         )
