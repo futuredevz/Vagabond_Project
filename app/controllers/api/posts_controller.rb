@@ -17,8 +17,17 @@ def create
     @post = @city.posts.create!(post_params)
     @posts = @city.posts
     render json: @posts
-    
-   
+end
+
+def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    render json: @posts
+end
+
+def destroy
+    @post = Post.find(params[:id]).destroy
+    render json: 200
 end
 
 private
