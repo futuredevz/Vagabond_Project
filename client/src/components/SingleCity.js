@@ -36,6 +36,7 @@ export default class SingleCity extends Component {
     addNewPost = async (newPost) => {
         const id = this.props.match.params.id
         await axios.post(`/api/cities/${id}/posts`, newPost)
+        
     }
 
 
