@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom"
-import SingleCity from './components/SingleCity';
-import SinglePost from './components/SinglePost';
-
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import LandingPage from './components/LandingPage'
+import NavBar from './components/NavBar';
 
 class App extends Component {
   render() {
     return (
       <Router>
-      <Switch>
-        <Route exact path ='/cities/:id' component={SingleCity} /> 
-        <Route exact path ='/cities/:city_id/posts/:id' component={SinglePost} /> 
-      </Switch>
-    </Router>
-
+        <div>
+          <NavBar/>
+          <Switch>
+            <Route exact path='/' component={LandingPage}/>
+            <Route exact path ='/cities/:id' component={SingleCity} /> 
+            <Route exact path ='/cities/:city_id/posts/:id' component={SinglePost} /> 
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
