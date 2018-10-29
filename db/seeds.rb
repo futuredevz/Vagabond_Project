@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+City.destroy_all
+User.destroy_all
+Post.destroy_all
+
 
 user = User.create(name: "Chris", current_city: "Atl", img: "something")
 city = City.create(name: "Atlanta", img: "https://i.imgur.com/PMSkWN5.jpg")
