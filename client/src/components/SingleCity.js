@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewPostForm from './NewPostForm';
 import styled from 'styled-components'
+import { Card } from 'semantic-ui-react'
 
 const CityPicture = styled.img`
     width: 100vw;
-    height: 400px;
+    height: 300px;
 `
 
 const CityName = styled.div`
     padding-left: 15px;
+    padding-bottom: 15px;
     width: 100vw;
     display: block;
     justify-content: center;
@@ -18,8 +20,9 @@ const CityName = styled.div`
 `
 const PostContainer = styled.div`
     width: 100vw;
-    height: 14vh;
-    padding: 30px;
+    height: 40vh;
+    padding-top: 30px;
+    padding-left: 30px;
     overflow: scroll;
 `
 
@@ -60,10 +63,10 @@ export default class SingleCity extends Component {
 
         const postContent = this.state.posts.map((post, i) => {
             return (
-                <div key={i}>
-                    <h3><Link to={`/cities/${post.city_id}/posts/${post.id}`}>{post.title} </Link></h3>
-                    <p>{post.body}</p>
-                </div>
+                    <Card key={i}>
+                    <Card.Content header= <Link to={`/cities/${post.city_id}/posts/${post.id}`}>{post.title}</Link>/>
+                    <Card.Content description={post.body} />
+                    </Card>
             )
         })
         return (
