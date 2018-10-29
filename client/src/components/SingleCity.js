@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewPostForm from './NewPostForm';
 import styled from 'styled-components'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
+
+const Page = styled.div`
+    margin: auto;
+`
 
 const CityPicture = styled.img`
     width: 100vw;
@@ -17,13 +21,16 @@ const CityName = styled.div`
     display: block;
     justify-content: center;
     align-items: baseline;
+    background: #f1f1f1;
 `
 const PostContainer = styled.div`
     width: 100vw;
-    height: 40vh;
-    padding-top: 30px;
-    padding-left: 30px;
+    height: 39vh;
+    padding: 30px;
     overflow: scroll;
+    overflow-x: hidden;
+    background: #f1f1f1;
+    /* margin: auto; */
 `
 
 export default class SingleCity extends Component {
@@ -63,18 +70,20 @@ export default class SingleCity extends Component {
 
         const postContent = this.state.posts.map((post, i) => {
             return (
-                    <Card key={i}>
-                    <Card.Content header= <Link to={`/cities/${post.city_id}/posts/${post.id}`}>{post.title}</Link>/>
+                <Card key={i}>
+                    
+                    <Card.Content href={`/cities/${post.city_id}/posts/${post.id}`}  header={post.title}/>
                     <Card.Content description={post.body} />
+                
                     </Card>
             )
         })
         return (
-            <div>
-                <div><CityPicture src={"https://i.imgur.com/PMSkWN5.jpg"} alt={city.name}/></div>
+            <Page>
+                <div><CityPicture src={city.img} alt={city.name}/></div>
                 <CityName>
                     <h1>{city.name}</h1> 
-                        <div onClick={this.toggleShowNewPostForm}>Add New Post</div>
+                        <Button onClick={this.toggleShowNewPostForm}>Add New Post</Button>
                             {this.state.showNewPostForm ?
                             <NewPostForm
                             addNewPost = {this.addNewPost} /> : ''
@@ -83,7 +92,7 @@ export default class SingleCity extends Component {
                 <PostContainer>
                         {postContent.reverse()}
                 </PostContainer>
-            </div>
+            </Page>
         )
     }
 }
