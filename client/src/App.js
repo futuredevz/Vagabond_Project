@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import NavBar from './components/NavBar';
+import SingleCity from './components/SingleCity'
+import SinglePost from './components/SinglePost'
 
 class App extends Component {
   render() {
