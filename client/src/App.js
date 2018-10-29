@@ -11,6 +11,8 @@ class App extends Component {
           <NavBar/>
           <Switch>
             <Route exact path='/' component={LandingPage}/>
+            <Route exact path ='/cities/:id' component={SingleCity} /> 
+            <Route exact path ='/cities/:city_id/posts/:id' component={SinglePost} /> 
           </Switch>
         </div>
       </Router>
