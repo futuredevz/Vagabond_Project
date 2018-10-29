@@ -1,4 +1,12 @@
 import React, { Component } from 'react'
+import { Form, Button } from 'semantic-ui-react'
+import styled from 'styled-components'
+
+const StyledForm = styled(Form)`
+    &&& {
+        width: 30vw;
+    }
+`
 
 export default class NewPostForm extends Component {
     state = {
@@ -27,11 +35,11 @@ export default class NewPostForm extends Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit} >
+            <StyledForm onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} type="text" name="title" value={this.state.newPost.title} placeholder='Title' />
                 <input onChange={this.handleChange} type="text" name="body" value={this.state.newPost.body} placeholder='Body' />
-                <input className='update' type='submit' value='Add Post' />
-            </form>
+                <Button className='update' type='submit' value='Add Post'>Submit</Button>
+            </StyledForm>
         )
     }
 }
