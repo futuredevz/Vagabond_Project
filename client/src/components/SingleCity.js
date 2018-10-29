@@ -68,7 +68,7 @@ export default class SingleCity extends Component {
         })
         return (
             <div>
-                <div><CityPicture src={city.img} alt={city.name} /></div>
+                <div><CityPicture src={"https://i.imgur.com/PMSkWN5.jpg"} alt={city.name}/></div>
                 <CityName>
                     <h1>{city.name}</h1> 
                         <div onClick={this.toggleShowNewPostForm}>Add New Post</div>
