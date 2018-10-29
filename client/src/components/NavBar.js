@@ -4,7 +4,6 @@ import styled from 'styled-components'
 const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
-  /* font: 56px 'Damion', cursive; */
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid black;
@@ -28,7 +27,7 @@ export default class NavBar extends Component {
     return (
       <Navbar>
         <LeftBox>Vagabond</LeftBox>
-        <RightBox>Sign In</RightBox>
+        <RightBox> Sign In</RightBox>
       </Navbar>
     )
   }
