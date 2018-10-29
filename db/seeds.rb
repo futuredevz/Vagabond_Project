@@ -8,4 +8,4 @@
 
 user = User.create(name: "Chris", current_city: "Atl", img: "something")
 city = City.create(name: "Atlanta", img: "https://i.imgur.com/PMSkWN5.jpg")
-post = Post.create(title: "test", body: "this is a test", user_id: 1, city_id: 1 )
+post = Post.create(title: "test", body: "this is a test", city_id: 1 )
