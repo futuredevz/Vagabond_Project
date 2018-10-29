@@ -2,15 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import LandingPage from './components/LandingPage'
 import NavBar from './components/NavBar';
-<<<<<<< HEAD
 import SinglePost from './components/SinglePost'
 import SingleCity from './components/SingleCity';
 import EditPostForm from './components/EditPostForm';
 
-=======
-import SingleCity from './components/SingleCity'
-import SinglePost from './components/SinglePost'
->>>>>>> f2d1609cce54f6890b1591e8bdcc9e5ea96811f5
 
 class App extends Component {
   render() {
