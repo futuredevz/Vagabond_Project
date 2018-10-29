@@ -77,11 +77,7 @@ export default class SingleCity extends Component {
                             }
                 </CityName>
                 <PostContainer>
-                    
-                    
                         {postContent.reverse()}
-
-
                 </PostContainer>
             </div>
         )
