@@ -34,19 +34,4 @@ private
 def post_params
     params.require(:post).permit(:title, :body)
 end
-
-def destroy 
-    @post = Post.find(params[:id]).destroy
-    render status: 200
-end
-
-def update
-    @post = Post.find(params[:id]).update(post_params)
-    render json: @post
-end
-
-private
-def post_params
-    params.require(:post).permit(:title, :body)
-end
 end
