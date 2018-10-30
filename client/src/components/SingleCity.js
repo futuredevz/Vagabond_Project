@@ -12,7 +12,6 @@ const Page = styled.div`
 
 const CityPicture = styled.img`
     width: 100vw;
-    padding-top: 60px;
     position: relative;
 `
 const Caption = styled.div`
@@ -103,6 +102,7 @@ export default class SingleCity extends Component {
                 <PostContainer>
                     {postContent.reverse()}
                 </PostContainer>
+                
             </Page>
         )
     }

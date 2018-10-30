@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage'
 import NavBar from './components/NavBar';
 import SinglePost from './components/SinglePost'
 import SingleCity from './components/SingleCity';
+import SignIn from './components/SignIn';
 
 
 class App extends Component {
@@ -13,7 +14,8 @@ class App extends Component {
         <div>
           <NavBar/>
           <Switch>
-            <Route exact path='/' component={LandingPage}/>
+            <Route exact path ='/' component={LandingPage}/>
+            <Route exact path ='/signin' component={SignIn} />
             <Route exact path ='/cities/:id' component={SingleCity} /> 
             <Route exact path ='/cities/:city_id/posts/:id' component={SinglePost} /> 
           </Switch>

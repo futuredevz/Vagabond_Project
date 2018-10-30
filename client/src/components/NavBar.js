@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   background: grey;
   color: #f1f1f1;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
-  width: 100vw;
+  /* width: 100vw; */
 `
 const LeftBox = styled.div`
   font: 30px 'Noto Sans', sans-serif;
@@ -20,19 +21,21 @@ const LeftBox = styled.div`
   align-self: flex-start;
   padding-left: 20px;
 `
-const RightBox = styled.div`
+const RightBox = styled(Link)`
+&&&{
   font: 14px 'Noto Sans', sans-serif;
   align-self: center;
   padding-right: 20px;
-`
-
+  color:white;
+}
+  `
 
 export default class NavBar extends Component {
   render() {
     return (
       <Navbar>
         <LeftBox>Vagabond</LeftBox>
-        <RightBox>|Sign in|</RightBox>
+        <RightBox to='/signin'>|Sign in|</RightBox>
       </Navbar>
     )
   }
