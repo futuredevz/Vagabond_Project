@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Card, Image } from 'semantic-ui-react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Link } from 'react-router-dom'
 
 const StyledCarouselText = styled.div`
   font-weight: bold;
@@ -56,39 +57,41 @@ export default class LandingPage extends Component {
     const citiesList = this.state.cities.map((city, i) => {
       return (
         <div key={i}>
-        <Card href={`/cities/${city.id}`}>
-        <StyledCardImage src={city.img} />
-        <Card.Content>
-          <Card.Header>{city.name}</Card.Header>
-        </Card.Content>
-        </Card>
+          <Link to={`/cities/${city.id}`}>
+            <Card>
+              <StyledCardImage src={city.img} />
+              <Card.Content>
+                <Card.Header>{city.name}</Card.Header>
+              </Card.Content>
+            </Card>
+          </Link>
         </div>
       )
     })
     return (
-    
+
       <Page>
-          <Carousel dynamicHeight={true} autoPlay={true} showThumbs={false} showIndicators={false} showStatus={false} interval={8000} infiniteLoop={true} transitionTime={2000}>
-            <div>
-              <StyledCarouselImage></StyledCarouselImage>
-            </div>
-            <div>
-              <StyledCarouselImage src='https://i.imgur.com/ryX9LiT.jpg' />
-            </div>
-            <div>
-              <StyledCarouselImage src="https://i.imgur.com/EwfNdxu.jpg" />
-            </div>
-            <div>
-              <StyledCarouselImage src="https://i.imgur.com/vKlbMZD.jpg" />
-            </div>
-          </Carousel>
-          <StyledCarouselText>Vagabond</StyledCarouselText>       
-       
+        <Carousel dynamicHeight={true} autoPlay={true} showThumbs={false} showIndicators={false} showStatus={false} interval={8000} infiniteLoop={true} transitionTime={2000}>
+          <div>
+            <StyledCarouselImage></StyledCarouselImage>
+          </div>
+          <div>
+            <StyledCarouselImage src='https://i.imgur.com/ryX9LiT.jpg' />
+          </div>
+          <div>
+            <StyledCarouselImage src="https://i.imgur.com/EwfNdxu.jpg" />
+          </div>
+          <div>
+            <StyledCarouselImage src="https://i.imgur.com/vKlbMZD.jpg" />
+          </div>
+        </Carousel>
+        <StyledCarouselText>Vagabond</StyledCarouselText>
+
         <StyledCitiesList>
           {citiesList}
         </StyledCitiesList>
       </Page>
-       
+
     )
   }
 }

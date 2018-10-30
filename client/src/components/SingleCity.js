@@ -70,10 +70,6 @@ export default class SingleCity extends Component {
         this.fetchData()
     }
 
-    toggleShowNewPostForm = () => {
-        this.setState({ showNewPostForm: !this.state.showNewPostForm })
-    }
-
     addNewPost = async (newPost) => {
         const id = this.props.match.params.id
         await axios.post(`/api/cities/${id}/posts`, newPost)
