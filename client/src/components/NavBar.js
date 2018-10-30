@@ -4,12 +4,14 @@ import styled from 'styled-components'
 const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
-  /* font: 56px 'Damion', cursive; */
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid black;
   background: grey;
   color: #f1f1f1;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 `
 const LeftBox = styled.div`
   font: 30px 'Noto Sans', sans-serif;
