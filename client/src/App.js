@@ -17,7 +17,7 @@ class App extends Component {
             <Route exact path='/' component={LandingPage}/>
             <Route exact path ='/cities/:id' component={SingleCity} /> 
             <Route exact path ='/cities/:city_id/posts/:id' component={SinglePost} /> 
-            <Route exact path = '/cities/:city_id/posts/:id/edit' component= {EditPostForm} />
+            {/* <Route exact path = '/cities/:city_id/posts/:id/edit' component= {EditPostForm} /> */}
           </Switch>
         </div>
       </Router>

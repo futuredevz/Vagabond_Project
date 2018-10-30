@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewPostForm from './NewPostForm';
 import styled from 'styled-components'
-import { Card, Button } from 'semantic-ui-react'
+import { Card, Button, Modal } from 'semantic-ui-react'
 
 const Page = styled.div`
     margin: auto;
@@ -51,7 +51,6 @@ export default class SingleCity extends Component {
     state = {
         city: {},
         posts: [],
-        showNewPostForm: false
     }
 
     fetchData = async () => {
@@ -65,7 +64,7 @@ export default class SingleCity extends Component {
     }
 
     async componentDidMount() {
-        this.fetchData()    
+        this.fetchData()
     }
 
     toggleShowNewPostForm = () => {
@@ -78,36 +77,36 @@ export default class SingleCity extends Component {
         this.fetchData()
     }
 
-
     render() {
         const city = this.state.city
 
         const postContent = this.state.posts.map((post, i) => {
             return (
+
+
                 <StyledCard key={i}>
                     <Card.Content href={`/cities/${post.city_id}/posts/${post.id}`}  header={post.title}/>
                     <Card.Content description={post.body} />
                 </StyledCard>
+
             )
         })
         return (
             <Page>
-                <div>
-                    <CityPicture src={city.img} alt={city.name}/>
-                    <Caption>{city.name}</Caption>
-                </div>
+
+                <div><CityPicture src={city.img} alt={city.name} /></div>
                 <CityName>
-                    {/* <h1>{city.name}</h1>  */}
-                        <Button onClick={this.toggleShowNewPostForm}>Add New Post</Button>
-                            {this.state.showNewPostForm ?
-                            <NewPostForm
-                            addNewPost = {this.addNewPost} /> : ''
-                            }
+                    <h1>{city.name}</h1>
+                        <NewPostForm 
+                        addNewPost={this.addNewPost}
+                         /> 
+
                 </CityName>
                 <PostContainer>
-                        {postContent.reverse()}
+                    {postContent.reverse()}
                 </PostContainer>
             </Page>
+            
         )
     }
 }
