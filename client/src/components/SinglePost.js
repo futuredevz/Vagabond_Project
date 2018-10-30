@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { Button, Modal } from 'semantic-ui-react'
+import EditPostForm from './EditPostForm';
+
 
 
 export default class SinglePost extends Component {
@@ -23,7 +26,7 @@ export default class SinglePost extends Component {
         const city_id = this.props.match.params.city_id
         const response = await axios.get(`/api/cities/${city_id}`)
         return response.data
-        
+
     }
 
     fetchOnePost = async () => {
@@ -35,26 +38,26 @@ export default class SinglePost extends Component {
     }
 
     handleDelete = async (postId) => {
-            swal({
-              title: `Are You Sure You want to Delete ${this.state.post.title} ?`,
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-            })
-              .then((willDelete) => {
+        swal({
+            title: `Are You Sure You want to Delete ${this.state.post.title} ?`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
                 if (willDelete) {
-                  swal('Success!', { icon: "success" })
-                    .then( async () => {
-                        const city_id = this.props.match.params.city_id
-                        await axios.delete(`/api/cities/${city_id}/posts/${postId}`)
-                        this.props.history.push(`/cities/${city_id}`)
-                    })
+                    swal('Success!', { icon: "success" })
+                        .then(async () => {
+                            const city_id = this.props.match.params.city_id
+                            await axios.delete(`/api/cities/${city_id}/posts/${postId}`)
+                            this.props.history.push(`/cities/${city_id}`)
+                        })
                 } else {
-                  swal("Successfully Cancelled");
+                    swal("Successfully Cancelled");
                 }
-              })
-          }
-    
+            })
+    }
+
 
     render() {
         const city = this.state.city
@@ -64,9 +67,13 @@ export default class SinglePost extends Component {
                 <h2>{city.name}</h2>
                 <h1>{post.title}</h1>
                 <p>{post.body}</p>
-                <button onClick = {()=> this.handleDelete(post.id)}>Delete</button>
-                <Link to = {`/cities/${city.id}/posts/${post.id}/edit`}>Edit </Link>
-
+                {/* <Button href = {`/cities/${city.id}/posts/${post.id}/edit`}>Edit </Button> */}
+                <EditPostForm
+                    cityId={this.props.match.params.city_id}
+                    postId={this.props.match.params.id}
+                    push={this.props.history.push}
+                />
+                <Button onClick={() => this.handleDelete(post.id)}>Delete</Button>
             </div>
         )
     }
