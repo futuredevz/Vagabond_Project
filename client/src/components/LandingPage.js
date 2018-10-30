@@ -14,10 +14,10 @@ const StyledCarouselText = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  opacity: 0.3;
+  opacity: 0.8;
 `
 const StyledCarouselImage = styled.img`
- height: 50vw;
+ height: 50.5vw;
  background-color:black;
 `
 
@@ -30,6 +30,13 @@ const StyledCitiesList = styled.div`
   display:flex;
   justify-content: space-evenly;
 `
+
+const StyledCardImage = styled(Image)`
+  &&&{
+    height: 115px;
+  }
+`
+
 
 export default class LandingPage extends Component {
   state = {
@@ -50,7 +57,7 @@ export default class LandingPage extends Component {
       return (
         <div key={i}>
         <Card href={`cities/${city.id}`}>
-        <Image src={city.img} />
+        <StyledCardImage src={city.img} />
         <Card.Content>
           <Card.Header>{city.name}</Card.Header>
         </Card.Content>
@@ -66,13 +73,13 @@ export default class LandingPage extends Component {
               <StyledCarouselImage></StyledCarouselImage>
             </div>
             <div>
-              <StyledCarouselImage src='https://www.visitmacysusa.com/sites/default/files/styles/hero/public/macys-los-angeles-skyline-at-night-header.jpg?itok=FTikBOPJ' />
+              <StyledCarouselImage src='https://i.imgur.com/ryX9LiT.jpg' />
             </div>
             <div>
-              <StyledCarouselImage src="https://xixerone.com/en/wp-content/uploads/sites/2/2017/09/Best-areas-to-stay-in-Dallas-Texas.jpg" />
+              <StyledCarouselImage src="https://i.imgur.com/EwfNdxu.jpg" />
             </div>
             <div>
-              <StyledCarouselImage src="https://i.imgur.com/PMSkWN5.jpg" />
+              <StyledCarouselImage src="https://i.imgur.com/vKlbMZD.jpg" />
             </div>
           </Carousel>
           <StyledCarouselText>Vagabond</StyledCarouselText>       

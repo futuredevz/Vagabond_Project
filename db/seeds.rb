@@ -13,8 +13,6 @@ Post.destroy_all
 user = User.create(name: "Chris", current_city: "Atl", img: "something")
 
 
-city = City.create(name: "Atlanta", img: "https://i.imgur.com/PMSkWN5.jpg")
-
-post = Post.create(title: "test", body: "this is a test", user_id: 1, city_id: 1 )
-city2 = City.create(name: "Los Angeles", img: "https://www.visitmacysusa.com/sites/default/files/styles/hero/public/macys-los-angeles-skyline-at-night-header.jpg?itok=FTikBOPJ")
-city3 = City.create(name: "Dallas", img: "https://xixerone.com/en/wp-content/uploads/sites/2/2017/09/Best-areas-to-stay-in-Dallas-Texas.jpg")
+city1 = City.create(name: "Atlanta", img: "https://i.imgur.com/ryX9LiT.jpg")
+city2 = City.create(name: "San Francisco", img: "https://i.imgur.com/EwfNdxu.jpg")
+city3 = City.create(name: "London", img: "https://i.imgur.com/vKlbMZD.jpg")
