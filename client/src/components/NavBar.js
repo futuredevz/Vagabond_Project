@@ -8,17 +8,19 @@ const Navbar = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid black;
+  background: grey;
+  color: #f1f1f1;
 `
 const LeftBox = styled.div`
-  font: 56px 'Noto Sans', sans-serif;
+  font: 30px 'Noto Sans', sans-serif;
   font-weight: bold;
   font-style: italic;
   align-self: flex-start;
   padding-left: 20px;
 `
 const RightBox = styled.div`
-  font: 32px 'Noto Sans', sans-serif;
-  align-self: flex-end;
+  font: 14px 'Noto Sans', sans-serif;
+  align-self: center;
   padding-right: 20px;
 `
 
@@ -28,7 +30,7 @@ export default class NavBar extends Component {
     return (
       <Navbar>
         <LeftBox>Vagabond</LeftBox>
-        <RightBox>Sign In</RightBox>
+        <RightBox>|Sign in|</RightBox>
       </Navbar>
     )
   }
