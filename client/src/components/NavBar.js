@@ -10,9 +10,9 @@ const Navbar = styled.div`
   /* border-bottom: 1px solid black; */
   background: grey;
   color: #f1f1f1;
-  /* position: fixed; */
+  position: fixed;
   top: 0;
-  /* width: 100vw; */
+  width: 100vw;
 `
 const LeftBox = styled.div`
   font: 30px 'Noto Sans', sans-serif;

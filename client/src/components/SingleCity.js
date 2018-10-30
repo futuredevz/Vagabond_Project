@@ -12,6 +12,7 @@ const Page = styled.div`
 
 const CityPicture = styled.img`
     width: 100vw;
+    padding-top: 60px;
     position: relative;
 `
 const Caption = styled.div`
@@ -46,7 +47,6 @@ const PostContainer = styled.div`
 const StyledCard = styled(Card)`
     &&&{
         width: 600px;
-        margin-bottom:20px;
     }
 `
 
