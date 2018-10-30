@@ -7,15 +7,29 @@ import { Card, Button, Modal } from 'semantic-ui-react'
 
 const Page = styled.div`
     margin: auto;
+    background: #f1f1f1;
 `
 
 const CityPicture = styled.img`
     width: 100vw;
-    height: 400px;
+    padding-top: 60px;
+    position: relative;
+`
+const Caption = styled.div`
+    color: white;
+    font-size: 50px;
+    left: 0;
+    position:absolute;
+    text-align:center;
+    top: 20px;
+    width: 100%;
+    font-family: 'Noto Sans', sans-serif;
+    font-style: italic;
 `
 
 const CityName = styled.div`
     padding-left: 15px;
+    padding-bottom: 15px;
     width: 100vw;
     display: block;
     justify-content: center;
@@ -24,12 +38,13 @@ const CityName = styled.div`
 `
 const PostContainer = styled.div`
     width: 100vw;
-    height: 39vh;
     padding: 30px;
-    overflow: scroll;
-    overflow-x: hidden;
     background: #f1f1f1;
-    /* margin: auto; */
+`
+const StyledCard = styled(Card)`
+    &&&{
+        width: 600px;
+    }
 `
 
 export default class SingleCity extends Component {
@@ -67,22 +82,25 @@ export default class SingleCity extends Component {
 
         const postContent = this.state.posts.map((post, i) => {
             return (
-                <Card key={i}>
 
-                    <Card.Content href={`/cities/${post.city_id}/posts/${post.id}`} header={post.title} />
+
+                <StyledCard key={i}>
+                    <Card.Content href={`/cities/${post.city_id}/posts/${post.id}`}  header={post.title}/>
                     <Card.Content description={post.body} />
+                </StyledCard>
 
-                </Card>
             )
         })
         return (
             <Page>
+
                 <div><CityPicture src={city.img} alt={city.name} /></div>
                 <CityName>
                     <h1>{city.name}</h1>
                         <NewPostForm 
                         addNewPost={this.addNewPost}
                          /> 
+
                 </CityName>
                 <PostContainer>
                     {postContent.reverse()}
