@@ -5,16 +5,6 @@ import { Grid, Card, Image, GridColumn } from 'semantic-ui-react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-<<<<<<< HEAD
-const StyledBackground = styled.div`
-  /* ('https://i.imgur.com/PMSkWN5.jpg'); */
-  background: grey;
-
-`
-const StyledWelcome = styled.div`
-
-`
-=======
 const CarouselContainer = styled.div`
   padding: 40px;
   height: 200px;
@@ -48,7 +38,6 @@ export default class LandingPage extends Component {
     const response = await axios.get('api/cities')
     this.setState({ cities: response.data })
   }
->>>>>>> 82b562fdb68cdc82fdfc05a53d3a9df90b2cf98e
 
   render() {
     const citiesList = this.state.cities.map((city, i) => {
@@ -65,11 +54,6 @@ export default class LandingPage extends Component {
       )
     })
     return (
-<<<<<<< HEAD
-      <StyledBackground>
-        yeee
-      </StyledBackground>
-=======
     
       <Page>
         <CarouselContainer>
@@ -96,7 +80,6 @@ export default class LandingPage extends Component {
         </StyledGrid>
       </Page>
        
->>>>>>> 82b562fdb68cdc82fdfc05a53d3a9df90b2cf98e
     )
   }
 }

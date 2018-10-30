@@ -7,11 +7,24 @@ import { Card, Button } from 'semantic-ui-react'
 
 const Page = styled.div`
     margin: auto;
+    background: #f1f1f1;
 `
 
 const CityPicture = styled.img`
     width: 100vw;
-    height: 300px;
+    padding-top: 60px;
+    position: relative;
+`
+const Caption = styled.div`
+    color: white;
+    font-size: 50px;
+    left: 0;
+    position:absolute;
+    text-align:center;
+    top: 20px;
+    width: 100%;
+    font-family: 'Noto Sans', sans-serif;
+    font-style: italic;
 `
 
 const CityName = styled.div`
@@ -25,12 +38,13 @@ const CityName = styled.div`
 `
 const PostContainer = styled.div`
     width: 100vw;
-    height: 39vh;
     padding: 30px;
-    overflow: scroll;
-    overflow-x: hidden;
     background: #f1f1f1;
-    /* margin: auto; */
+`
+const StyledCard = styled(Card)`
+    &&&{
+        width: 600px;
+    }
 `
 
 export default class SingleCity extends Component {
@@ -70,19 +84,20 @@ export default class SingleCity extends Component {
 
         const postContent = this.state.posts.map((post, i) => {
             return (
-                <Card key={i}>
-                    
+                <StyledCard key={i}>
                     <Card.Content href={`/cities/${post.city_id}/posts/${post.id}`}  header={post.title}/>
                     <Card.Content description={post.body} />
-                
-                    </Card>
+                </StyledCard>
             )
         })
         return (
             <Page>
-                <div><CityPicture src={city.img} alt={city.name}/></div>
+                <div>
+                    <CityPicture src={city.img} alt={city.name}/>
+                    <Caption>{city.name}</Caption>
+                </div>
                 <CityName>
-                    <h1>{city.name}</h1> 
+                    {/* <h1>{city.name}</h1>  */}
                         <Button onClick={this.toggleShowNewPostForm}>Add New Post</Button>
                             {this.state.showNewPostForm ?
                             <NewPostForm
