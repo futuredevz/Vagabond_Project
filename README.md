@@ -14,8 +14,8 @@ And below the slideshow are clickable cards containing each city.
 -When the user clicks the ‘Edit’ button a blank form will appear where they can edit the post.
 When the user clicks the ‘Delete’ button a modal box will appear saying, “Are You Sure You Want To Delete”. And if you click thr red ‘OK’ button, a modal box will appear letting you know that the deletion was a success.
 
-<h4>
-Technologies Used:
+
+## Technologies Used:
 
 <ul>
 <li>HTML5</li>
@@ -26,10 +26,10 @@ Technologies Used:
 <li>PostgresQl</li>
 <li>Semantic UI</li>
 </ul>
-</h4>
 
-<h5>
-Future Development:
+
+
+## Future Development:
 <ul>
 <li>working ‘Sign In’ link</li>
 <li>Verify that a new post has successfully been published.</li>
@@ -38,7 +38,7 @@ Future Development:
 <li>Have comments associated with a specific user</li>
 
 </ul>
-</h5>
+
 
 
 Deployed App (https://vagabond-team-4.herokuapp.com/) 
