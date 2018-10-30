@@ -59,7 +59,6 @@ export default class SinglePost extends Component {
                 <h2>{city.name}</h2>
                 <h1>{post.title}</h1>
                 <p>{post.body}</p>
-                {/* <Button href = {`/cities/${city.id}/posts/${post.id}/edit`}>Edit </Button> */}
                 <EditPostForm
                     cityId={this.props.match.params.city_id}
                     postId={this.props.match.params.id}

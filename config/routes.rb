@@ -6,4 +6,7 @@ namespace :api do
   end
 end
 
+# get '/api/*', to='404'
+# get '/*', to='root'
+
 end

@@ -80,10 +80,15 @@ export default class SingleCity extends Component {
         const city = this.state.city
         const postContent = this.state.posts.map((post, i) => {
             return (
+                <Link to={`/cities/${post.city_id}/posts/${post.id}`}>
                 <StyledCard key={i}>
-                    <Card.Content href={`/cities/${post.city_id}/posts/${post.id}`}  header={post.title}/>
+                    <Card.Content header={post.title}/>
                     <Card.Content description={post.body} />
+                    <Card.Content extra>
+                        {post.created_at}
+                    </Card.Content>
                 </StyledCard>
+                </Link>
             )
         })
         return (
