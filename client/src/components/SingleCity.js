@@ -79,34 +79,27 @@ export default class SingleCity extends Component {
 
     render() {
         const city = this.state.city
-
         const postContent = this.state.posts.map((post, i) => {
             return (
-
-
                 <StyledCard key={i}>
                     <Card.Content href={`/cities/${post.city_id}/posts/${post.id}`}  header={post.title}/>
                     <Card.Content description={post.body} />
                 </StyledCard>
-
             )
         })
         return (
             <Page>
-
-                <div><CityPicture src={city.img} alt={city.name} /></div>
+                <CityPicture src={city.img} alt={city.name} />
+                <Caption>{city.name}</Caption>
                 <CityName>
-                    <h1>{city.name}</h1>
                         <NewPostForm 
                         addNewPost={this.addNewPost}
                          /> 
-
                 </CityName>
                 <PostContainer>
                     {postContent.reverse()}
                 </PostContainer>
             </Page>
-            
         )
     }
 }

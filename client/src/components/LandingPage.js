@@ -17,7 +17,7 @@ const StyledCarouselText = styled.div`
   opacity: 0.3;
 `
 const StyledCarouselImage = styled.img`
- height: 47vw;
+ height: 50vw;
  background-color:black;
 `
 
