@@ -46,6 +46,7 @@ const PostContainer = styled.div`
 const StyledCard = styled(Card)`
     &&&{
         width: 600px;
+        margin-bottom:20px;
     }
 `
 
