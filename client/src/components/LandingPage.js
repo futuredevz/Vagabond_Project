@@ -56,7 +56,7 @@ export default class LandingPage extends Component {
     const citiesList = this.state.cities.map((city, i) => {
       return (
         <div key={i}>
-        <Card href={`cities/${city.id}`}>
+        <Card href={`/cities/${city.id}`}>
         <StyledCardImage src={city.img} />
         <Card.Content>
           <Card.Header>{city.name}</Card.Header>
