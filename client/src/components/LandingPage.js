@@ -1,31 +1,43 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
-import { Grid, Card, Image, GridColumn } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-const CarouselContainer = styled.div`
-  padding: 40px;
-  height: 200px;
-  align-items: center;
-  margin: auto;
-  margin-bottom: 300px;
-  text-align: center;
+const StyledCarouselText = styled.div`
+  font-weight: bold;
+  font-style: italic;
+  position: absolute;
+  font-size:150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0.8;
 `
+const StyledCarouselImage = styled.img`
+ height: 50.5vw;
+ background-color:black;
+`
+
 const Page = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
   background: #f1f1f1;
-  height: 93vh;
 `
-const StyledGrid = styled(Grid)`
+const StyledCitiesList = styled.div`
+  padding-top:100px;
+  padding-bottom:50px;
+  display:flex;
+  justify-content: space-evenly;
+`
+
+const StyledCardImage = styled(Image)`
   &&&{
-    margin: auto;
+    height: 115px;
   }
 `
+
+
 export default class LandingPage extends Component {
   state = {
     cities: []
@@ -43,42 +55,38 @@ export default class LandingPage extends Component {
   render() {
     const citiesList = this.state.cities.map((city, i) => {
       return (
-        // <Link key={i} to={`cities/${city.id}`}>{city.name}</Link>
-        <GridColumn key={i}>
+        <div key={i}>
         <Card href={`cities/${city.id}`}>
-        <Image src={city.img} />
+        <StyledCardImage src={city.img} />
         <Card.Content>
           <Card.Header>{city.name}</Card.Header>
         </Card.Content>
         </Card>
-        </GridColumn>
+        </div>
       )
     })
     return (
     
       <Page>
-        <CarouselContainer>
-          <Carousel showThumbs={false} width={800} autoPlay={true} interval={5000} infiniteLoop={true} transitionTime={1000}>
+          <Carousel dynamicHeight={true} autoPlay={true} showThumbs={false} showIndicators={false} showStatus={false} interval={8000} infiniteLoop={true} transitionTime={2000}>
             <div>
-              <img src='https://www.visitmacysusa.com/sites/default/files/styles/hero/public/macys-los-angeles-skyline-at-night-header.jpg?itok=FTikBOPJ' />
-              <p className="legend"> Los Angeles</p>
+              <StyledCarouselImage></StyledCarouselImage>
             </div>
             <div>
-              <img src="https://xixerone.com/en/wp-content/uploads/sites/2/2017/09/Best-areas-to-stay-in-Dallas-Texas.jpg" />
-              <p className="legend">Dallas</p>
+              <StyledCarouselImage src='https://i.imgur.com/ryX9LiT.jpg' />
             </div>
             <div>
-              <img src="https://i.imgur.com/PMSkWN5.jpg" />
-              <p className="legend">Atlanta</p>
+              <StyledCarouselImage src="https://i.imgur.com/EwfNdxu.jpg" />
+            </div>
+            <div>
+              <StyledCarouselImage src="https://i.imgur.com/vKlbMZD.jpg" />
             </div>
           </Carousel>
-        </CarouselContainer>
-
-        <StyledGrid columns='equal'>
-          <Grid.Row>
-              {citiesList}
-          </Grid.Row>
-        </StyledGrid>
+          <StyledCarouselText>Vagabond</StyledCarouselText>       
+       
+        <StyledCitiesList>
+          {citiesList}
+        </StyledCitiesList>
       </Page>
        
     )

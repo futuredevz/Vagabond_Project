@@ -3,19 +3,33 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import NewPostForm from './NewPostForm';
 import styled from 'styled-components'
-import { Card, Button } from 'semantic-ui-react'
+import { Card, Button, Modal } from 'semantic-ui-react'
 
 const Page = styled.div`
     margin: auto;
+    background: #f1f1f1;
 `
 
 const CityPicture = styled.img`
     width: 100vw;
-    height: 400px;
+    padding-top: 60px;
+    position: relative;
+`
+const Caption = styled.div`
+    color: white;
+    font-size: 50px;
+    left: 0;
+    position:absolute;
+    text-align:center;
+    top: 20px;
+    width: 100%;
+    font-family: 'Noto Sans', sans-serif;
+    font-style: italic;
 `
 
 const CityName = styled.div`
-    padding-left: 15px;
+    padding-left: 30px;
+    padding-top: 20px;
     width: 100vw;
     display: block;
     justify-content: center;
@@ -24,19 +38,22 @@ const CityName = styled.div`
 `
 const PostContainer = styled.div`
     width: 100vw;
-    height: 39vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     padding: 30px;
-    overflow: scroll;
-    overflow-x: hidden;
     background: #f1f1f1;
-    /* margin: auto; */
+`
+const StyledCard = styled(Card)`
+    &&&{
+        width: 600px;
+    }
 `
 
 export default class SingleCity extends Component {
     state = {
         city: {},
         posts: [],
-        showNewPostForm: false
     }
 
     fetchData = async () => {
@@ -50,7 +67,7 @@ export default class SingleCity extends Component {
     }
 
     async componentDidMount() {
-        this.fetchData()    
+        this.fetchData()
     }
 
     toggleShowNewPostForm = () => {
@@ -63,33 +80,27 @@ export default class SingleCity extends Component {
         this.fetchData()
     }
 
-
     render() {
         const city = this.state.city
-
         const postContent = this.state.posts.map((post, i) => {
             return (
-                <Card key={i}>
-                    
+                <StyledCard key={i}>
                     <Card.Content href={`/cities/${post.city_id}/posts/${post.id}`}  header={post.title}/>
                     <Card.Content description={post.body} />
-                
-                    </Card>
+                </StyledCard>
             )
         })
         return (
             <Page>
-                <div><CityPicture src={city.img} alt={city.name}/></div>
+                <CityPicture src={city.img} alt={city.name} />
+                <Caption>{city.name}</Caption>
                 <CityName>
-                    <h1>{city.name}</h1> 
-                        <Button onClick={this.toggleShowNewPostForm}>Add New Post</Button>
-                            {this.state.showNewPostForm ?
-                            <NewPostForm
-                            addNewPost = {this.addNewPost} /> : ''
-                            }
+                        <NewPostForm 
+                        addNewPost={this.addNewPost}
+                         /> 
                 </CityName>
                 <PostContainer>
-                        {postContent.reverse()}
+                    {postContent.reverse()}
                 </PostContainer>
             </Page>
         )
