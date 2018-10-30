@@ -28,8 +28,8 @@ const Caption = styled.div`
 `
 
 const CityName = styled.div`
-    padding-left: 15px;
-    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-top: 20px;
     width: 100vw;
     display: block;
     justify-content: center;
@@ -38,6 +38,9 @@ const CityName = styled.div`
 `
 const PostContainer = styled.div`
     width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     padding: 30px;
     background: #f1f1f1;
 `

@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Form, Button, Modal } from 'semantic-ui-react'
-import styled from 'styled-components'
-
-
 
 export default class EditPostForm extends Component {
     state = {
@@ -28,13 +25,13 @@ export default class EditPostForm extends Component {
         await axios.put(`/api/cities/${cityId}/posts/${postId}`, this.state.post)
         this.props.push(`/cities/${cityId}/posts/${postId}`)
         this.setState({ modalOpen: false })
-        
-        
+        await this.props.fetchData
     }
 
     handleOpen = () => this.setState({ modalOpen: true })
 
     editPostModal = () => (
+        
         <Modal trigger={<Button onClick={this.handleOpen}>Edit</Button>}
             open={this.state.modalOpen}
         >
@@ -48,7 +45,7 @@ export default class EditPostForm extends Component {
                         value={this.state.post.body}
                         onChange={this.handleChange}
                     />
-                    <input type='submit' value='Update Post' />
+                    <Button type='submit' value='Update Post'>Submit</Button>
                 </Form>
 
             </Modal.Content>

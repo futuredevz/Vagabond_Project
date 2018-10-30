@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert'
-import { Link } from 'react-router-dom'
 import { Button, Modal } from 'semantic-ui-react'
 import EditPostForm from './EditPostForm';
+import styled from 'styled-components'
 
+const SinglePostContainer = styled.div`
+   padding: 100px;
+`
 
 
 export default class SinglePost extends Component {
@@ -14,27 +17,16 @@ export default class SinglePost extends Component {
     }
 
     async componentDidMount() {
-        const city_id = this.props.match.params.city_id
-
-        const city = await this.fetchOneCity(city_id)
-        const post = await this.fetchOnePost(city_id)
-
-        this.setState({ city, post })
+        this.fetchData()
     }
 
-    fetchOneCity = async () => {
-        const city_id = this.props.match.params.city_id
-        const response = await axios.get(`/api/cities/${city_id}`)
-        return response.data
-
-    }
-
-    fetchOnePost = async () => {
+    fetchData= async () => {
         const city_id = this.props.match.params.city_id
         const post_id = this.props.match.params.id
+        const responseCity = await axios.get(`/api/cities/${city_id}`)
+        const responsePost = await axios.get(`/api/cities/${city_id}/posts/${post_id}`)
+        this.setState({ city: responseCity.data, post: responsePost.data })
 
-        const response = await axios.get(`/api/cities/${city_id}/posts/${post_id}`)
-        return response.data
     }
 
     handleDelete = async (postId) => {
@@ -63,7 +55,7 @@ export default class SinglePost extends Component {
         const city = this.state.city
         const post = this.state.post
         return (
-            <div>
+            <SinglePostContainer>
                 <h2>{city.name}</h2>
                 <h1>{post.title}</h1>
                 <p>{post.body}</p>
@@ -72,9 +64,10 @@ export default class SinglePost extends Component {
                     cityId={this.props.match.params.city_id}
                     postId={this.props.match.params.id}
                     push={this.props.history.push}
+                    fetchData={this.fetchData()}
                 />
                 <Button onClick={() => this.handleDelete(post.id)}>Delete</Button>
-            </div>
+            </SinglePostContainer>
         )
     }
 }
